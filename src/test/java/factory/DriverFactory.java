@@ -10,8 +10,14 @@ import java.time.Duration;
 import java.util.Map;
 
 public class DriverFactory {
-    public static WebDriver newChromeDriver(){
-        return applyCommonSetup(new ChromeDriver());
+    public static WebDriver newChromeDriver(boolean headless) {
+        ChromeOptions options = new ChromeOptions();
+
+        if (headless) {
+            options.addArguments("--headless");
+        }
+
+        return applyCommonSetup(new ChromeDriver(options));
     }
 
     public static WebDriver newEdgeDriver(){
