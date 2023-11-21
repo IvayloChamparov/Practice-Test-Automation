@@ -21,7 +21,7 @@ public class BaseTest {
     //Change the driver in initDriver to newChromeDriver(), newEdgeDriver(), newFirefoxDriver() or newDevice("Nexus 5") or ("iPhone 12 Pro")... to switch browsers
     @BeforeMethod
     public void setup() {
-        driver = DriverFactory.newChromeDriver();
+        driver = DriverFactory.newChromeDriver(true);
     }
     @AfterMethod(alwaysRun = true)
     public void closeDriver(){
