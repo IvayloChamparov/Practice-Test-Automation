@@ -17,7 +17,7 @@ jobs:
          with:
           
           java-version: '17'
-          distribution: 'temirin'
+          distribution: 'adopt'
        - name: Build with Maven
          run: mvn -B package --file pom.xml
 
@@ -30,6 +30,6 @@ jobs:
          uses: actions/setup-java@v2
          with:
           java-version: '17'
-          distribution: 'temirin'
+          distribution: 'adopt'
        - name: Run Tests
          run: mvn test
