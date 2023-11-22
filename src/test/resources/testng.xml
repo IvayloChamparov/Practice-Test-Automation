@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="practiceTestAutomationTestsSuite">
+    <test name="practiceTestAutomation">
+        <packages>
+            <package name="tests.practiceTestAutomationTests.LoggedInSuccessfullyPageTests" />
+            <package name="tests.practiceTestAutomationTests.LoginPageTests" />
+        </packages>
+    </test>
+</suite>
