@@ -37,4 +37,4 @@ jobs:
           unzip chromedriver.zip -d /usr/local/bin
           chmod +x /usr/local/bin/chromedriver
       - name: Run Selenium Tests
-        run: mvn test -Dtest=YourSeleniumTestClassName
+        run: mvn test -Dtest=tests.practiceTestAutomationTests.LoggedInSuccessfullyPageTests,tests.practiceTestAutomationTests.LoginPageTests
