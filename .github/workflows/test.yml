@@ -17,10 +17,6 @@ jobs:
         with:
           java-version: '17'
           distribution: 'adopt'
-      - name: Set up Maven
-        uses: actions/setup-maven@v2
-        with:
-          maven-version: '3.8.1'
       - name: Build with Maven
         run: mvn -B package --file pom.xml
 
@@ -34,11 +30,7 @@ jobs:
         with:
           java-version: '17'
           distribution: 'adopt'
-      - name: Set up Maven
-        uses: actions/setup-maven@v2
-        with:
-          maven-version: '3.8.1'
-      - name: Download and set up WebDriver
+      - name: Run Tests  
         run: |
           LATEST_RELEASE=$(curl -sSL https://chromedriver.storage.googleapis.com/LATEST_RELEASE)
           curl -sSL https://chromedriver.storage.googleapis.com/${LATEST_RELEASE}/chromedriver_linux64.zip -o chromedriver.zip
