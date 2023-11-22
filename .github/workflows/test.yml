@@ -20,7 +20,7 @@ jobs:
       - name: Set up Maven
         uses: actions/setup-maven@v2
         with:
-          maven-version: '4.0.0'
+          maven-version: '3.8.1'
       - name: Build with Maven
         run: mvn -B package --file pom.xml
 
@@ -37,7 +37,7 @@ jobs:
       - name: Set up Maven
         uses: actions/setup-maven@v2
         with:
-          maven-version: '4.0.0'
+          maven-version: '3.8.1'
       - name: Run Tests
         run: |
           echo "Current directory: $(pwd)"
