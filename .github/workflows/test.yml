@@ -1,4 +1,4 @@
-name: Java CI with Maven and TestNG
+name: Java CI with Maven, Selenium, and TestNG
 
 on:
   push:
@@ -18,13 +18,13 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
       - name: Set up Maven
-        uses: actions/setup-maven@<commit-or-sha>
+        uses: actions/setup-maven@v2
         with:
           maven-version: '3.8.1'
       - name: Build with Maven
         run: mvn -B package --file pom.xml
 
-  publish-job:
+  selenium-test:
     runs-on: ubuntu-latest
      
     steps:
@@ -35,11 +35,14 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
       - name: Set up Maven
-        uses: actions/setup-maven@<commit-or-sha>
+        uses: actions/setup-maven@v2
         with:
           maven-version: '3.8.1'
-      - name: Run Tests
+      - name: Download and set up WebDriver
         run: |
-          echo "Current directory: $(pwd)"
-          ls -R
-          mvn test
+          LATEST_RELEASE=$(curl -sSL https://chromedriver.storage.googleapis.com/LATEST_RELEASE)
+          curl -sSL https://chromedriver.storage.googleapis.com/${LATEST_RELEASE}/chromedriver_linux64.zip -o chromedriver.zip
+          unzip chromedriver.zip -d /usr/local/bin
+          chmod +x /usr/local/bin/chromedriver
+      - name: Run Selenium Tests
+        run: mvn test -Dtest=YourSeleniumTestClassName
